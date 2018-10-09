@@ -16,4 +16,5 @@ public Product findProductById(int productId)throws ProductNotFoundException;
 public void deleteProduct(Product product);
 public List<Product> findProductByName(String productName)throws ProductNotFoundException;
 public List<Product> findProductByCategory(String productCategory);
+public List<Product> findProductByCategoryAndPrice(String productCategory, double max, double min);
 }

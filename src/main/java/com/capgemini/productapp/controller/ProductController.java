@@ -75,4 +75,15 @@ public class ProductController {
 		return new ResponseEntity<List<Product>>( productService.findProductByName(productName),HttpStatus.OK);
 		
 	}
+	@GetMapping("/products/category")
+	public ResponseEntity<List<Product>> findProductByCategory(@RequestParam String productCategory){
+		System.out.println("swathi");
+		return new ResponseEntity<List<Product>>(productService.findProductByCategory(productCategory),HttpStatus.OK);
+	}
+	@GetMapping("/products/category/price")
+	public ResponseEntity<List<Product>> findProductByCategoryAndPrice(@RequestParam String productCategory , double max , double min)
+		throws ProductNotFoundException{
+		return new ResponseEntity<List<Product>>(productService.findProductByCategoryAndPrice(productCategory, max, min), HttpStatus.OK);
+		
+}
 }
