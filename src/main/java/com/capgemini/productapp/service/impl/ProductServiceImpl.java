@@ -1,8 +1,10 @@
 package com.capgemini.productapp.service.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.productapp.entity.Product;
@@ -41,5 +43,20 @@ public	ProductRepository productRepository;
 		 
 	}
 
-	
+	@Override
+	public List<Product> findProductByName(String productName) throws ProductNotFoundException {
+		List<Product> listProduct=productRepository.findProductByName(productName);
+		if(!listProduct.isEmpty()) {
+		return listProduct;
+	}
+
+	throw new ProductNotFoundException("product does not exist");
+
+	}
+
+	@Override
+	public List<Product> findProductByCategory(String productCategory) {
+		List<Product> listProduct=productRepository.findProductByCategory(productCategory);
+		return listProduct;
+	}	
 }
